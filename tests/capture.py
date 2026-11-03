@@ -63,6 +63,18 @@ with tempfile.TemporaryDirectory(prefix="lazy capture ") as temporary:
     assert rejected.returncode != 0 and "assertion failed" in rejected.stderr, rejected
     init = root / "init.lua"
     original = init.read_text()
+    init.write_text('error("purifier startup proof")\n' + original)
+    default_expression = expression.replace(
+        ';nvimArgs=["--headless" "-c" "lua assert(vim.g.answer==99)"];', ";"
+    )
+    rejected = subprocess.run(
+        ["nix", "build", "--impure", "--no-link", "--expr", default_expression],
+        text=True,
+        capture_output=True,
+    )
+    assert rejected.returncode != 0 and "purifier startup proof" in rejected.stderr, (
+        rejected
+    )
     init.write_text(original.replace("vim.g.answer = 42", "vim.g.answer = 43"))
     capture()
     assert before == (native.read_bytes(), companion.read_bytes())
