@@ -21,11 +21,7 @@
   fetchers ? { },
   doCheck ? false,
   checkCommand ? "",
-  nvimArgs ? [
-    "--headless"
-    "-c"
-    "qa!"
-  ],
+  nvimArgs ? [ "--headless" ],
 }:
 let
   lock = purifier.checkLock (
