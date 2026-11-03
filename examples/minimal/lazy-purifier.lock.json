@@ -1,0 +1,71 @@
+{
+  "entries": [
+    {
+      "git": {
+        "commitObject": {
+          "gitlinks": [],
+          "object": "dHJlZSAzODYyMWExNzVhMjQzOWY0OGE4MDBiZTVkMjA1NTY5YTk0N2ZmZGU0CnBhcmVudCBmY2IzZTlhYzEyN2QxNzhiNGMxODkwODgzOTYxNjViM2ZhY2MyMTllCmF1dGhvciBTaW1vbiBIYXVzZXIgPFNpbW9uLUhhdXNlckBvdXRsb29rLmRlPiAxNzc1ODAwMzY2ICswMjAwCmNvbW1pdHRlciBHaXRIdWIgPG5vcmVwbHlAZ2l0aHViLmNvbT4gMTc3NTgwMDM2NiArMDIwMApncGdzaWcgLS0tLS1CRUdJTiBQR1AgU0lHTkFUVVJFLS0tLS0KIAogd3NGY0JBQUJDQUFRQlFKcDJKQXVDUkMxYVE3dXU1VWhsQUFBcXNNUUFJODE5Tk9jZTZ5V3NINE9oRlMvbVJJTwogVDdGY05WREdZeU9WKzFXcTh0MXlrUlZlRjFJbXl4ekJSQjFSM3pnYmY3WDRDdHNZS0ozd2tIRjBSOHlmdTgrMAogQ05wQTAxNGNNUGdVN2ZoV21aQkR2aWFOM1ZWbWpSWGd4V1JlUFNtaTNybk1VU1BHWDAxUVVSMVRlNW1VYmJ4YwogS2dHaERZVmxHNWRaQm1yMnNlV09naVdYdFMvTUhXeUlDR3JYaFYySkp6WVJCZkVQZldkR2QvU21GRnhrNE5LVQogOUk1eDVEZ1Mzd2VaSURScXU2cEJvcGJmNWxoSWduV3Y3NTczUTVIRlRmVWtoaUJLb1hUa0VEaC83cW1NSFZrUwogNWNGZGJqYWl4QjZweUw2THUxSmxOdkl6UU9CbEdhWlZOSGlUaHlVMVBkZ2dFTUhYVVl6dUpUdDNkN3hhSzd4dgogZG0vcTRXV0psb2lzamFmN2dyV2hHdTB5dHBvT2dxbUpVRWsxVGNnZDVSOExxcWNObk1NWW5CZHhTOGx6aGlXaAogZk5Yak9DM3NmMzhUSENsZ3FZYVFDaUhIbVY4Lzl6TURxZ1pEWmFaN0I3Y2VkTHNZTGQ4eEYzWnNtWWQxaUxvawogTDNNdVNzNEZIU3JTRnpvdUY3bzFCeTc5M3hxenN4V2pjU01UUWVRK29SbXcrYUlhcEFZZzhTM014UnBRdmxYMAogbGhXNE1sUU55bE1jaDBSblRFQk8vdEh6ZE9ZYkkxMEFLZXN1SnVkMlY0YzBpcmwrWXhxMlZzcVFFRzAvbmZqdQogU2VGZmFPeXlCN2FGcW5mOUF0SDZUM2x6WmtWUG9GTlVSaldZZzY0WmE0aVdWWExYa1BkMnQ5M25LL1lsQ3dIegogUEd3ek9XMldldEFpSFdlVUJTMlMKID1tUkNNCiAtLS0tLUVORCBQR1AgU0lHTkFUVVJFLS0tLS0KIAoKZG9jczogcHJvdmlkZSBpbmZvIGluIHJlYWRtZSB0aGF0IHBsZW5hcnkgd2lsbCBiZSBhcmNoaXZlZCBpbiBRMiAyMDI2ICgjNjc3KQ=="
+        },
+        "leaveDotGit": true,
+        "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
+        "submodules": false,
+        "url": "https://github.com/nvim-lua/plenary.nvim.git"
+      },
+      "hash": "sha256-nkfETDkPiE+Kd2BWYZijgUp9bP8RgFwRmvqJz2BMuq4=",
+      "lazy": {
+        "branch": "master",
+        "name": "plenary.nvim"
+      },
+      "path": "plenary.nvim"
+    },
+    {
+      "git": {
+        "commitObject": {
+          "gitlinks": [],
+          "object": "dHJlZSA1NWY5NDU0ZjRkMDkzNmUwNDkzZTM2MjdmZDliNDJjYmY2YTZmZmNlCnBhcmVudCBmOTFkODA5NzNmODAwMjVkNGVkMDAzODBmMmUwNmM2NjlkZmRhNDlkCmF1dGhvciBCZW4gRGVuaGFydG9nIDxiZW5Ac3Vkb2ZvcmdlLmNvbT4gMTYzNzI1NDA5MSAtMDcwMApjb21taXR0ZXIgR2l0SHViIDxub3JlcGx5QGdpdGh1Yi5jb20+IDE2MzcyNTQwOTEgLTA1MDAKZ3Bnc2lnIC0tLS0tQkVHSU4gUEdQIFNJR05BVFVSRS0tLS0tCiAKIHdzQmNCQUFCQ0FBUUJRSmhsb1BMQ1JCSzdoajRPdjNySXdBQUcxSUlBSzlCekpYUWkzaTU4VGZPUGJwc1F2TFAKIEdQRVorOHBaUmZyUzZXRFBkcDJxZTJDcG9XS3dqZVFoMm10VEt0ZS8ybEttOThQR2N6ODVLUTBsNVBROUlJR0IKIG1MeEJObnFxKy91UE1xRzVOVmgrclkvcEE4V2FIR29makJ0bEhEWi9JcmVHSzhpemEzOFRFYlZ6NE9OU0dzMm8KIERZRG15YlVkMHAxZHFUREhuQVZwdHg1Vy9RaDVYdWxKclpMcjNPZmhIRkhRS2xvVWUrbERwZVpLMHBRS0UvWEQKIGh5UTJ1NWNOUXpTRUE4VlpRZHR3YndqUDRvWnpkVnJwVGZZQzZsZjFOZE8zRGRqcWRYS0wzWENmenJMeGlncHEKIHl2ZlBwd0laZ2tMVFlaay9mVFZQRFhHQmhUZ1JRRzRYdTUrUWhpOWhhcmd5VzB4YWhBRG80RUJOZmJqVzFBND0KID1EUG52CiAtLS0tLUVORCBQR1AgU0lHTkFUVVJFLS0tLS0KIAoKYWRkIGEgTElDRU5TRSBmaWxlICgjMjMpCgpjbG9zZXMgIzIx"
+        },
+        "leaveDotGit": true,
+        "rev": "b7404d35d5d3548a82149238289fa71f7f6de4ac",
+        "submodules": false,
+        "url": "https://github.com/nvim-lua/popup.nvim.git"
+      },
+      "hash": "sha256-dNWz/xovUg55fDZUpVs/2kLphk3lqQyvPtc9ATwbeSQ=",
+      "lazy": {
+        "branch": "master",
+        "name": "popup.nvim"
+      },
+      "path": "popup.nvim"
+    }
+  ],
+  "native": {
+    "plenary.nvim": {
+      "branch": "master",
+      "commit": "74b06c6c75e4eeb3108ec01852001636d85a932b"
+    },
+    "popup.nvim": {
+      "branch": "master",
+      "commit": "b7404d35d5d3548a82149238289fa71f7f6de4ac"
+    }
+  },
+  "purifier": "lazy",
+  "sdk": "c2c754f9cd15b4538e89a17623b2ffff7275484cf9c2433c717b81527a0b6cb2",
+  "selection": {
+    "plenary.nvim": {
+      "branch": null,
+      "commit": null,
+      "submodules": true,
+      "tag": null,
+      "url": "https://github.com/nvim-lua/plenary.nvim.git",
+      "version": null
+    },
+    "popup.nvim": {
+      "branch": null,
+      "commit": null,
+      "submodules": true,
+      "tag": null,
+      "url": "https://github.com/nvim-lua/popup.nvim.git",
+      "version": null
+    }
+  },
+  "version": 1
+}
