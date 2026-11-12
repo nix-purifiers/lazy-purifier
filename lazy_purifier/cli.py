@@ -88,7 +88,7 @@ def main_impl():
         expression = (
             "import "
             + json.dumps(
-                os.environ["LAZY_PURIFIER_SDK"] + "/lib/lazy-purifier/nix/release.nix"
+                os.environ["LAZY_PURIFIER_SDK"] + "/lib/lazy-purifier/pkgs/build-lazy-project/release.nix"
             )
             + " {root="
             + json.dumps(str(root))

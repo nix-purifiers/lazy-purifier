@@ -24,6 +24,6 @@ pkgs.lib.makeScope pkgs.newScope (scope: {
       helper = builtins.hashFile "sha256" ../lua/nix_purifier_lazy.lua;
     }
   );
-  cli = scope.callPackage ./cli.nix { inherit nixpkgsSrc purifierSrc; };
-  buildLazyProject = scope.callPackage ./build-project.nix { };
+  cli = scope.callPackage ./cli/default.nix { inherit nixpkgsSrc purifierSrc; };
+  buildLazyProject = scope.callPackage ./build-lazy-project/default.nix { };
 })
