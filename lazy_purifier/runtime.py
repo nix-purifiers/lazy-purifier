@@ -25,7 +25,7 @@ def realize(root, companion, native):
     if not profile.exists():
         expression = (
             "import "
-            + json.dumps(sdk + "/lib/lazy-purifier/nix/realize.nix")
+            + json.dumps(sdk + "/lib/lazy-purifier/pkgs/build-lazy-project/realize.nix")
             + " {root="
             + json.dumps(str(root))
             + ";lockFile="

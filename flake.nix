@@ -18,7 +18,7 @@
       ];
       forAll = nixpkgs.lib.genAttrs systems;
       overlay = final: prev: {
-        lazy-purifier = import ./nix/scope.nix {
+        lazy-purifier = import ./pkgs/default.nix {
           pkgs = final;
           nixpkgsSrc = nixpkgs;
           purifierSrc = purifier;
@@ -44,7 +44,7 @@
           meta.description = "Lock native lazy.nvim plugins";
         };
       });
-      lib.lazy-purifier.readLock = import ./nix/read-lock.nix { lib = nixpkgs.lib; };
+      lib.lazy-purifier = (nixpkgs.lib.extend (import ./lib-overlays/default)).lazy-purifier;
       checks = forAll (
         system:
         let

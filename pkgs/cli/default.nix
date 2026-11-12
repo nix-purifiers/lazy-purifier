@@ -18,15 +18,15 @@
 stdenvNoCC.mkDerivation {
   pname = "lazy-purifier";
   version = "0.1.0";
-  src = ../.;
+  src = ../..;
   nativeBuildInputs = [ makeWrapper ];
   dontBuild = true;
   installPhase = ''
     mkdir -p "$out/bin" "$out/lib/lazy-purifier"
-    cp -r lazy_purifier nix native lua "$out/lib/lazy-purifier/"
+    cp -r lazy_purifier pkgs lib-overlays native lua "$out/lib/lazy-purifier/"
     install -m755 bin/lazy-purifier "$out/bin/lazy-purifier"
     for file in realize release; do
-      substituteInPlace "$out/lib/lazy-purifier/nix/$file.nix" --replace-fail '@nixpkgs@' '${nixpkgsSrc}' --replace-fail '@purifier@' '${purifierSrc}'
+      substituteInPlace "$out/lib/lazy-purifier/pkgs/build-lazy-project/$file.nix" --replace-fail '@nixpkgs@' '${nixpkgsSrc}' --replace-fail '@purifier@' '${purifierSrc}'
     done
     wrapProgram "$out/bin/lazy-purifier" \
       --prefix PATH : ${

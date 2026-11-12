@@ -25,7 +25,9 @@
 }:
 let
   lock = purifier.checkLock (
-    import ./read-lock.nix { inherit lib; } { inherit src lockFile nativeLockFile; }
+    import ../../lib-overlays/default/read-lock.nix { inherit lib; } {
+      inherit src lockFile nativeLockFile;
+    }
   );
   prepared = import ./environment.nix scope { inherit lock fetchers; };
   source = lib.cleanSourceWith {
@@ -40,11 +42,11 @@ let
   };
   data = writeText "lazy-lock-data.json" (builtins.toJSON lock.data);
   driver = lib.fileset.toSource {
-    root = ../.;
+    root = ../..;
     fileset = lib.fileset.unions [
-      ../lazy_purifier/layout.py
-      ../native/bootstrap.lua
-      ../native/check.py
+      ../../lazy_purifier/layout.py
+      ../../native/bootstrap.lua
+      ../../native/check.py
     ];
   };
   project = runCommand "lazy-configuration" { nativeBuildInputs = [ git ]; } ''
