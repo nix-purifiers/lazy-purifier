@@ -20,6 +20,7 @@ env = configure(
     data["selection"],
     True,
     explicit=True,
+    lua_config=manifest.get("lua"),
 )
 args = sys.argv[7:] or ["--headless"]
 args += ["-c", "lua if vim.v.errmsg ~= '' then vim.cmd.cquit(1) end", "-c", "qa!"]

@@ -56,6 +56,41 @@ output names available without import-from-derivation. Its release is a native
 Neovim configuration source archive. `lazy-purifier bundle` builds the archive;
 `publish --tag TAG` uploads the exact archive to an existing GitHub release.
 
+## Native Lua module suppliers
+
+Select native LuaRocks-built packages from the scope belonging to Neovim's
+original interpreter:
+
+```nix
+let
+  configured = pkgs.lazy-purifier.overrideScope (_: _: {
+    extraLuaPackages = luaPackages: [ luaPackages.luafilesystem ];
+  });
+in configured.cli
+```
+
+Use this CLI to capture and launch the configuration. Its
+`configured.buildLazyProject` uses the same module environment for Nix builds.
+The original Lua package environment includes the packages' native dependency
+closure. Packages for another Lua or LuaJIT interpreter, and values without
+native Lua module ownership, are rejected. Native `require` uses the explicit
+environment's paths; ambient `LUA_PATH` and `LUA_CPATH` cannot supply replacements.
+
+Changing the selected modules changes the SDK identity and requires a lock
+update. Module environments contain platform-specific native artifacts; capture
+using the selected SDK on each target platform and use external lock paths when
+keeping several platform captures. Capture, verification, prefetch and normal wrapped editor launches all
+use that SDK. The plugin Git lock and native lazy.nvim dependency selection stay
+in use. This supplies already built native modules; lazy.nvim's networked rocks
+resolver remains disabled, and plugin build hooks remain unsupported. It does
+not convert Lua 5.4 libraries to Neovim's LuaJIT ABI or resolve rockspecs from
+plugin source. Ordinary Neovim installations need their own module setup.
+
+The native integration test captures the real plugin graph and loads the
+LuaFileSystem C extension in the wrapped editor, checks its mapped native origin,
+rejects ambient module shadows and incompatible suppliers, and checks stable
+locks and rejection by an SDK without those modules.
+
 ## Scope
 
 The initial implementation supports public HTTPS Git plugins with Lua-only

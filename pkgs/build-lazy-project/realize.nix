@@ -7,10 +7,21 @@
 let
   nixpkgsSrc = /. + "@nixpkgs@";
   pkgs = import nixpkgsSrc { };
-  scope = import ../default.nix {
-    inherit pkgs nixpkgsSrc;
-    purifierSrc = /. + "@purifier@";
-  };
+  scope =
+    (import ../default.nix {
+      inherit pkgs nixpkgsSrc;
+      purifierSrc = /. + "@purifier@";
+    }).overrideScope
+      (
+        _: _:
+        let
+          overrides = "@scopeOverrides@";
+        in
+        overrides
+        // {
+          luaConfig = import ../restore-lua-config.nix overrides.luaConfig;
+        }
+      );
   lock = import ../../lib-overlays/default/read-lock.nix { inherit (pkgs) lib; } {
     src = /. + root;
     lockFile = /. + lockFile;

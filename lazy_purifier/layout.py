@@ -15,6 +15,7 @@ def configure(
     source_native=None,
     explicit=False,
     persistent=None,
+    lua_config=None,
 ):
     state.mkdir(parents=True, exist_ok=True)
     storage = persistent or state
@@ -39,6 +40,9 @@ def configure(
     )
     env.pop("LUA_PATH", None)
     env.pop("LUA_CPATH", None)
+    if lua_config:
+        env["LUA_PATH"] = lua_config["path"]
+        env["LUA_CPATH"] = lua_config["cpath"]
     bootstrap = storage / "data" / root.name / "lazy/lazy.nvim"
     bootstrap.parent.mkdir(parents=True, exist_ok=True)
     if bootstrap.exists() or bootstrap.is_symlink():

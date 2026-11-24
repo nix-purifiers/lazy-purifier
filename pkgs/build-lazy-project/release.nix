@@ -6,10 +6,21 @@
 let
   nixpkgsSrc = /. + "@nixpkgs@";
   pkgs = import nixpkgsSrc { };
-  scope = import ../default.nix {
-    inherit pkgs nixpkgsSrc;
-    purifierSrc = /. + "@purifier@";
-  };
+  scope =
+    (import ../default.nix {
+      inherit pkgs nixpkgsSrc;
+      purifierSrc = /. + "@purifier@";
+    }).overrideScope
+      (
+        _: _:
+        let
+          overrides = "@scopeOverrides@";
+        in
+        overrides
+        // {
+          luaConfig = import ../restore-lua-config.nix overrides.luaConfig;
+        }
+      );
 in
 (scope.buildLazyProject {
   src = /. + root;

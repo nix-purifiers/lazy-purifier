@@ -73,6 +73,7 @@ def execute(
             source_native=source_native or native,
             explicit=explicit,
             persistent=state / "editor",
+            lua_config=manifest.get("lua"),
         )
         env["LAZY_PURIFIER_CACHE_HOME"] = str(home)
         env["LAZY_PURIFIER_PROJECT"] = str(root)

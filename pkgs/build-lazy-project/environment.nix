@@ -9,6 +9,7 @@
   sdkVersion,
   original,
   git,
+  luaConfig,
   ...
 }:
 {
@@ -64,6 +65,7 @@ let
     builtins.toJSON {
       inherit tree plugins;
       sdk = sdkVersion;
+      lua = luaConfig;
     }
   );
   output = runCommand "lazy-locked-environment" { passthru = { inherit plugins; }; } ''
