@@ -34,6 +34,7 @@ def capture(root, companion, native, update=False, explicit=False):
             False,
             source_native=native,
             explicit=explicit,
+            lua_config=json.loads(Path(os.environ["LAZY_PURIFIER_LUA_CONFIG"]).read_text()),
         )
         # Capture uses ordinary native Git resolution in a private cache.
         for key, value in original_environment().items():

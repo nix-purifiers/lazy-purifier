@@ -7,6 +7,7 @@
   fetchgit,
   purifier,
   sdkVersion,
+  luaConfig,
   original,
   core,
   git,

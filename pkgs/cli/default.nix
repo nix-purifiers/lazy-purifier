@@ -14,7 +14,13 @@
   sdkVersion,
   nixpkgsSrc,
   purifierSrc,
+  luaConfig,
+  writeText,
 }:
+let
+  luaConfigFile = writeText "lazy-native-lua-config.json" (builtins.toJSON luaConfig);
+  scopeOverrides = lib.generators.toPretty { } { inherit luaConfig sdkVersion; };
+in
 stdenvNoCC.mkDerivation {
   pname = "lazy-purifier";
   version = "0.1.0";
@@ -26,7 +32,9 @@ stdenvNoCC.mkDerivation {
     cp -r lazy_purifier pkgs lib-overlays native lua "$out/lib/lazy-purifier/"
     install -m755 bin/lazy-purifier "$out/bin/lazy-purifier"
     for file in realize release; do
-      substituteInPlace "$out/lib/lazy-purifier/pkgs/build-lazy-project/$file.nix" --replace-fail '@nixpkgs@' '${nixpkgsSrc}' --replace-fail '@purifier@' '${purifierSrc}'
+      substituteInPlace "$out/lib/lazy-purifier/pkgs/build-lazy-project/$file.nix" \
+        --replace-fail '@nixpkgs@' '${nixpkgsSrc}' --replace-fail '@purifier@' '${purifierSrc}' \
+        --replace-fail '"@scopeOverrides@"' ${lib.escapeShellArg scopeOverrides}
     done
     wrapProgram "$out/bin/lazy-purifier" \
       --prefix PATH : ${
@@ -44,6 +52,7 @@ stdenvNoCC.mkDerivation {
       --set LAZY_PURIFIER_ORIGINAL_CORE ${originalCore} \
       --set LAZY_PURIFIER_PREFETCH_GIT ${nix-prefetch-git}/bin/nix-prefetch-git \
       --set LAZY_PURIFIER_SDK_VERSION ${sdkVersion} \
+      --set LAZY_PURIFIER_LUA_CONFIG ${luaConfigFile} \
       --set LAZY_PURIFIER_SDK "$out"
     makeWrapper "$out/bin/lazy-purifier" "$out/bin/nvim" --add-flags '--native'
   '';
